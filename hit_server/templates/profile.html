@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <title>Patient Profile</title>
+
+    <link rel="shortcut icon" href='{% static "css/bootstrap.min.css" %}' href='{% static "img/favicon.png" %}'>
+    <link href='{% static "css/bootstrap.min.css" %}'rel="stylesheet">
+    <link href='{% static "css/bootstrap-theme.css" %}'rel="stylesheet">
+    <link href='{% static "css/elegant-icons-style.css" %}'rel="stylesheet" />
+    <link href='{% static "css/font-awesome.css" %}'rel="stylesheet" />
+    <link href='{% static "css/font-awesome.min.css" %}'rel="stylesheet" />
+    <link href='{% static "assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" %}'rel="stylesheet" />
+    <link href='{% static "assets/fullcalendar/fullcalendar/fullcalendar.css" %}'rel="stylesheet" />
+    <link href='{% static "assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" %}'rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" href='{% static "css/owl.carousel.css" %}'type="text/css">
+    <link href='{% static "css/jquery-jvectormap-1.2.2.css" %}'rel="stylesheet">
+    <link rel="stylesheet" href='{% static "css/bootstrap-theme.css" %}'href='{% static "css/fullcalendar.css" %}'>
+    <link href='{% static "css/widgets.css" %}'rel="stylesheet">
+    <link href='{% static "css/style.css" %}'rel="stylesheet">
+    <link href='{% static "css/style-responsive.css" %}'rel="stylesheet" />
+    <link href='{% static "css/xcharts.min.css" %}'rel=" stylesheet">
+    <link href='{% static "css/jquery-ui-1.10.4.min.css" %}'rel="stylesheet">
+
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Chronoline.js : chronoline.js is a library for making a chronology timeline out of events on a horizontal timescale." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+  </head>
+
+  <body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form">
+              <div class="form-group">
+                <label for="text">Label Name:</label>
+                <input type="text" class="form-control" id="newlabelname">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="modalsave">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- container section start -->
+  <section id="container" class="">
+      <!--header start-->
+      <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
+            </div>
+
+            <!--logo start-->
+            <a href="index.html" class="logo">{{ p.first_name}}<span class="lite"></span></a>
+            <!--logo end-->
+
+            <div class="nav search-row" id="top_menu">
+                <!--  search form start -->
+                <ul class="nav top-menu">
+                    <li>
+                        <form class="navbar-form">
+                            <input class="form-control" placeholder="Search" type="text">
+                        </form>
+                    </li>
+                </ul>
+                <!--  search form end -->
+            </div>
+
+            <div class="top-nav notification-row">
+                <!-- notificatoin dropdown start-->
+                <ul class="nav pull-right top-menu">
+
+                    <!-- task notificatoin start -->
+                    <li id="task_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="icon-task-l"></i>
+                            <span class="badge bg-important">2</span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">You have 5 pending tasks</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc"> Meet with 5 patients </div>
+                                        <div class="percent">50%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                            <span class="sr-only">90% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="task-info">
+                                        <div class="desc"> Add two new patients </div>
+                                        <div class="percent">20%</div>
+                                    </div>
+                                    <div class="progress progress-striped active">
+                                        <div class="progress-bar"  role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                            <span class="sr-only">20% Complete</span>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="#">See All Tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- task notificatoin end -->
+                    <!-- inbox notificatoin start-->
+                    <li id="mail_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-envelope-l"></i>
+                            <span class="badge bg-important">3</span>
+                        </a>
+                        <ul class="dropdown-menu extended inbox">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">You have 3 new messages</p>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"><img alt="avatar" src='{% static "img/avatar-mini2.jpg" %}' ></span>
+
+                                    <span class="subject">
+                                    <span class="from">Greg  Martin</span>
+                                    <span class="time">1 min</span>
+                                    </span>
+                                    <span class="message">
+                                        Are my wife's reports out yet? ...
+
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"><img alt="avatar" src='{% static "img/avatar1_small.jpg" %}' ></span>
+                                    <span class="subject">
+                                    <span class="from">Sarah Mckenzie</span>
+                                    <span class="time">5 mins</span>
+                                    </span>
+                                    <span class="message">
+                                     I need to talk about the conditions I have been having..
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="photo"><img alt="avatar" src='{% static "img/avatar-mini3.jpg" %}' ></span>
+                                    <span class="subject">
+                                    <span class="from">Tam Smith</span>
+                                    <span class="time">2 hrs</span>
+                                    </span>
+                                    <span class="message">
+                                        I would like to schedule a call with you..
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">See all messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- inbox notificatoin end -->
+                    <!-- alert notification start-->
+                    <li id="alert_notificatoin_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                            <i class="icon-bell-l"></i>
+                            <span class="badge bg-important">5</span>
+                        </a>
+                        <ul class="dropdown-menu extended notification">
+                            <div class="notify-arrow notify-arrow-blue"></div>
+                            <li>
+                                <p class="blue">You have 3 new notifications</p>
+                            </li>
+                            <li>
+                                <a href="#">
+
+                                    <span class="label label-primary"><i class="icon_profile"></i></span>
+                                    Call with Ms. hannible at 12
+
+                                    <span class="small italic pull-right">5 mins</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-warning"><i class="icon_pin"></i></span>
+                                    John location.
+                                    <span class="small italic pull-right">50 mins</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+
+                                    <span class="label label-danger"><i class="icon_book_alt"></i></span>
+                                    Time to call Ms. Sarah for her reports.
+
+                                    <span class="small italic pull-right">1 hr</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+
+                                    <span class="label label-success"><i class="icon_like"></i></span>
+                                    Meeting with management at 3
+
+                                    <span class="small italic pull-right"> Today</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">See all notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- alert notification end-->
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src='{% static "img/avatar1_small.jpg" %}' >
+                            </span>
+                            <span class="username">Dr. Paplomata </span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li class="eborder-top">
+                                <a href="#"><i class="icon_profile"></i> My Profile</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
+                            </li>
+                            <li>
+                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                            </li>
+                            <li>
+                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
+                            </li>
+                            <li>
+                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!-- notificatoin dropdown end-->
+            </div>
+      </header>
+      <!--header end-->
+
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu">
+
+              {% for l in labels%}
+              <li class="sub-menu">
+                <a class="">
+                  <i class="icon_house_alt"></i>
+                  <span>{{l}}</span>
+                </a>
+              </li>
+              {%endfor%}
+
+
+
+              <!-- <li id = "all" li class="active">
+                <a class="">
+                  <i class="glyphicon-cloud"></i>
+                  <span>All</span>
+                </a>
+              </li>
+
+              <li class="sub-menu">
+                <a class="" href="index.html">
+                  <i class="glyphicon-pencil"></i>
+                  <span>United States</span>
+                </a>
+              </li>
+              <li class="sub-menu">
+                <a class="" href="index.html">
+                  <i class="glyphicon-plus"></i>
+                  <span>Add Label</span>
+                </a>
+              </li> -->
+
+
+
+            </ul>
+            <!-- sidebar menu end-->
+          </div>
+        </aside>
+      <!--sidebar end-->
+
+      <!--main content start-->
+      <section id="main-content">
+
+          <section class="wrapper">
+          <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa-user-md"></i> {{p.first_name}} {{p.last_name}}</h3>
+                    <ol class="breadcrumb">
+                      <li><i class="fa fa-home"></i><a href="#" id="homelink">Home</a></li>
+                        <!--<li><i class="icon_documents_alt"></i>Pages</li>-->
+                        <li><i class="fa fa-user-md"></i>Patients / {{p.first_name}} {{p.last_name}}</li>
+                    </ol>
+                </div>
+            </div>
+              <div class="row">
+                <!-- profile-widget -->
+                <div class="col-lg-12">
+                    <div class="profile-widget profile-widget-info">
+                          <div class="panel-body">
+                            <div class="col-lg-2 col-sm-2">
+                              <h4>{{p.first_name}} {{p.last_name}}</h4>
+                              <div class="follow-ava">
+                                  <img src='{% static "img/avatar1_small.jpg" %}'  alt="">
+                              </div>
+                              <h6 id="pid"> {{p.pid}} </h6>
+                            </div>
+                             <div class="col-lg-3 col-sm-4 follow-info">
+
+                                <p>Condition:  {{p.Conditions.0.condition_name}}</p>
+                                <h6>
+                                    <span><i class="icon_clock_alt"></i>11:05 AM</span>
+                                    <span><i class="icon_calendar"></i>25.10.13</span>
+                                </h6>
+                                <p></p>
+
+                                <p>Last Visit &nbsp <span><i class="icon_calendar"></i>&nbsp 25.8.13</span></p>
+
+                                <p> Labels: </p>
+                                {% for label in p.labels %}
+                                <span class="label label-info">{{label}} </span> &nbsp
+                                {% endfor %}
+
+                                <span id="newlabel" class="label label-info" data-toggle="modal" data-target="#myModal"> Add New </span>
+
+                                </div>
+                                <div class="col-lg-2 col-sm-6 follow-info weather-category">
+                                      <ul>
+                                          <li class="active">
+                                              <i class="fa fa-stethoscope fa-2x"> </i>
+                                              <br> {{p.Observations.0.obs_name}}
+                                          </li>
+                                      </ul>
+                                </div>
+                                <div class="col-lg-2 col-sm-6 follow-info weather-category">
+
+                                      <ul>
+                                          <li class="active">
+                                               <i class="fa fa-medkit fa-2x"> </i>
+                                              <br>{{p.Observations.0.value }} {{p.Observations.0.units }}
+                                           </li>
+                                      </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+              </div>
+              <!-- page start-->
+              <div class="row">
+                 <div class="col-lg-12">
+                    <section class="panel">
+                          <header class="panel-heading tab-bg-info">
+                              <ul class="nav nav-tabs">
+
+                                  <!--<li class="active">
+                                      <a data-toggle="tab" href="#recent-activity">
+                                          <i class="icon-home"></i>
+                                          Updates
+                                      </a>
+                                  </li>-->
+
+                                  <li>
+                                      <a data-toggle="tab" href="#profile">
+                                          <i class="icon-user"></i>
+                                          Profile
+                                      </a>
+                                  </li>
+                                   <li>
+                                      <a data-toggle="tab" href="#Details">
+                                          <i class="icon-user"></i>
+                                          SCP Details
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a data-toggle="tab" href="#Test">
+                                          <i class="icon-user"></i>
+                                          Test
+                                      </a>
+                                  </li>
+
+                              </ul>
+                          </header>
+                          <div class="panel-body">
+                              <div class="tab-content">
+                                <!--
+
+                                  -->
+                                  <!-- profile -->
+                                  <div id="profile" class="tab-pane">
+                                    <section class="panel">
+                                      <div class="panel-body bio-graph-info">
+                                          <h1>Bio Graph</h1>
+                                          <div class="row">
+                                              <div class="bio-row">
+                                                  <p><span>Name </span>{{p.first_name}} {{p.last_name}}</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Phone </span>(+021) 956 789123</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Birthday</span>27 August 1987</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Email </span>jenifer@mailname.com</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>PCP</span>Ann Smith </p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Surgeon</span>Mike Grey</p>
+                                              </div>
+
+                                              <div class="bio-row">
+                                                  <p><span>Radiation Oncologist </span>Jack White</p>
+                                              </div>
+                                              <div class="bio-row">
+                                                  <p><span>Medical Oncologist </span>Tim Brown</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </section>
+                                      <section>
+                                          <div class="row">
+                                          </div>
+                                      </section>
+                                        <!--main content end-->
+      <div class="container">
+    <div class="page-header">
+        <h1 id="timeline">Timeline</h1>
+    </div>
+    <ul class="timeline">
+        <li>
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">{{p.Observations.0.obs_name}}</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{p.Observations.0.value }} {{p.Observations.0.units }}</small></p>
+            </div>
+            <div class="timeline-body">
+
+            </div>
+          </div>
+        </li>
+        <li class="timeline-inverted">
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">{{p.Observations.1.obs_name}}</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{p.Observations.1.value }} {{p.Observations.1.units }}</small></p>
+            </div>
+            <div class="timeline-body">
+
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="timeline-badge warning"><i class="glyphicon glyphicon-credit-card"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">{{p.Observations.2.obs_name}}</h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{p.Observations.2.value }} {{p.Observations.2.units }}</small></p>
+            </div>
+            <div class="timeline-body">
+
+            </div>
+          </div>
+        </li>
+
+    </ul>
+</div>
+</div>
+                                                                   <!--scp details-->
+                                <div id="Details" class="tab-pane">
+                                    <section class="panel">
+                                      <div class="panel-body bio-graph-info">
+                                          <h1>Treatment Summary</h1>
+                                          <div class="row">
+
+                                              <div class="bio-row">
+                                                  <p><span>Surgery </span> <div class="col-sm-10">
+                                                     <input type="text" class="form-control">
+                                                    </div>
+                                                </p>
+                                              </div>
+
+                                              <div class="bio-row">
+                                                  <p><span>Radiation </span> <div class="col-sm-10">
+                                                     <input type="text" class="form-control">
+                                                    </div>
+                                                </p>
+                                              </div>
+
+                                          </div>
+                                          <div class="row">
+                                          </div>
+
+                                          <h1>Follow Up Care Plan</h1>
+                                          <div class="row">
+                                              <div class="bio-row">
+                                                  <p><span> Additional Treatment </span> <div class="col-sm-10">
+                                                     <input type="text" class="form-control">
+                                                    </div>
+                                                </p>
+                                              </div>
+
+                                              <div class="bio-row">
+                                                  <p><span> Possible Side Effects </span> <div class="col-sm-10">
+                                                     <input type="text" class="form-control">
+                                                    </div>
+                                                </p>
+                                              </div>
+
+                                          </div>
+                                          <div class="row">
+                                          </div>
+                                          <div class="row">
+                                            <h1></h1>
+                                          </div>
+                                          <h1>Nurse Notes</h1>
+                                          <div class="col-sm-10">
+                                                     <input type="text" class="form-control">
+                                                    </div>
+                                        </div>
+                                    </section>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                  </div>
+
+                                  <!-- scp details-->
+
+                                  {%for c in p.Observations%}
+                                  <div id="Test" class="tab-pane">
+                                    <section class="panel">
+
+                                      <div class="panel-body bio-graph-info">
+                                          <!-- <h1>{{c.obs_name}}</h1> -->
+                                          <div class="row">
+
+                                            <div class="panel panel-danger">
+
+                                                <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">        {{c.obs_name}}
+                                                              </div>
+                                                          </a>
+                                                      </h4>
+                                                  </div>
+                                                  <div id="collapseOne" class="panel-collapse collapse in">
+                                                        <div class="bio-row">
+                                                          <span>Name : </span> {{c.obs_name}}
+                                                        </div>
+                                                        <div class="bio-row">
+                                                          <span>Date : </span> {{c.obs_date}}
+                                                        </div>
+                                                        <div class="bio-row">
+                                                          <span>Value : </span> {{c.value}}
+                                                        </div>
+                                                        <div class="bio-row">
+                                                          <span>Units : </span> {{c.units}}
+                                                        </div>
+                                                        <div class="bio-row">
+                                                          <p><span>Description : </span> {{c.obs_desc}} </p>
+                                                        </div>
+
+
+                                                    </div>
+
+                                          </div>
+
+
+
+                                      </div>
+                                      {% endfor %}
+                                    </section>
+                                      <section>
+                                          <div class="row">
+                                          </div>
+                                      </section>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </section>
+                 </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+      </section>
+
+  </section>
+  <!-- container section end -->
+    <!-- javascripts -->
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- nice scroll -->
+    <script src="js/jquery.scrollTo.min.js" type="text/javascript"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- jquery knob -->
+    <script src="assets/jquery-knob/js/jquery.knob.js" type="text/javascript"></script>
+    <!--custome script for all page-->
+    <script src="js/scripts.js" type="text/javascript"></script>
+    <!-- javascripts -->
+
+    <script src='{% static "js/jquery.js"%}' type="text/javascript"></script>
+      <script src='{% static "js/jquery-ui-1.10.4.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery-1.8.3.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery-ui-1.9.2.custom.min.js"%}' type="text/javascript" ></script>
+
+    <script src='{% static "js/custom.js"%}' type="text/javascript"></script>
+
+    <script src='{% static "js/bootstrap.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery.scrollTo.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery.nicescroll.js"%}' type="text/javascript"></script>
+    <script src='{% static "assets/jquery-knob/js/jquery.knob.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery.sparkline.js"%}' type="text/javascript"></script>
+    <script src='{% static "assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/owl.carousel.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/fullcalendar.min.js"%}' type="text/javascript"></script>
+      <script src='{% static "assets/fullcalendar/fullcalendar/fullcalendar.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/calendar-custom.js"%}' type="text/javascript"></script>
+      <script src='{% static "js/jquery.rateit.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery.customSelect.min.js"%}' type="text/javascript"></script>
+      <script src='{% static "assets/chart-master/Chart.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/scripts.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/sparkline-chart.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/easy-pie-chart.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery-jvectormap-1.2.2.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery-jvectormap-world-mill-en.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/xcharts.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery.autosize.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery.placeholder.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/gdp-data.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/morris.min.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/sparklines.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/charts.js"%}' type="text/javascript"></script>
+    <script src='{% static "js/jquery.slimscroll.min.js"%}' type="text/javascript"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.0.1/jquery.qtip.min.css" />
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.0.1/jquery.qtip.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src='{% static "chronoline/raphael-min.js"%}' type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href='{% static "chronoline/chronoline.css"%}'/>
+    <script type="text/javascript" src='{% static "chronoline/chronoline.js"%}' type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+      var events = [
+      {dates: [new Date(2011, 2, 31)], title: "2011 Season Opener", section: 0},
+      {dates: [new Date(2012, 1, 29)], title: "Spring Training Begins", section: 2},
+      {dates: [new Date(2012, 3, 5)], title: "Atlanta Braves @ New York Mets Game 1", section: 1},
+      {dates: [new Date(2012, 3, 7)], title: "Atlanta Braves @ New York Mets Game 2", section: 1},
+      {dates: [new Date(2012, 3, 8)], title: "Atlanta Braves @ New York Mets Game 3", section: 1},
+      {dates: [new Date(2012, 3, 9), new Date(2012, 3, 11)], title: "Atlanta Braves @ Houston Astros", section: 1},
+      {dates: [new Date(2012, 3, 13), new Date(2012, 3, 15)], title: "Milwaukee Brewers @ Atlanta Braves", section: 1},
+      {dates: [new Date(2012, 3, 9), new Date(2012, 3, 11)], title: "Boston Red Sox @ Toronto Blue Jays", section: 1},
+      {dates: [new Date(2012, 3, 13), new Date(2012, 3, 15)], title: "Baltimore Orioles @ Toronto Blue Jays", section: 1},
+      {dates: [new Date(2012, 3, 17), new Date(2012, 3, 19)], title: "Tampa Bay Rays @ Toronto Blue Jays", section: 1},
+      {dates: [new Date(2012, 3, 20), new Date(2012, 3, 23)], title: "Toronto Blue Jays @ Kansas City Royals", section: 1},
+      {dates: [new Date(2012, 3, 5)], title: "Opening Day for 12 Teams", section: 1},
+      {dates: [new Date(2012, 2, 28)], title: "Seattle Mariners v. Oakland A's", section: 1, description: "Played in Japan!"},
+      {dates: [new Date(2012, 4, 18), new Date(2012, 5, 24)], title: "Interleague Play", section: 1},
+      {dates: [new Date(2012, 5, 10)], title: "All-Star Game", section: 1},
+      {dates: [new Date(2012, 9, 24)], title: "World Series Begins", section: 3}
+      ];
+
+      var sections = [
+      {dates: [new Date(2011, 2, 31), new Date(2011, 9, 28)], title: "2011 MLB Season", section: 0, attrs: {fill: "#d4e3fd"}},
+      {dates: [new Date(2012, 2, 28), new Date(2012, 9, 3)], title: "2012 MLB Regular Season", section: 1, attrs: {fill: "#d4e3fd"}},
+      {dates: [new Date(2012, 1, 29), new Date(2012, 3, 4)], title: "Spring Training", section: 2, attrs: {fill: "#eaf0fa"}},
+      {dates: [new Date(2012, 9, 4), new Date(2012, 9, 31)], title: "2012 MLB Playoffs", section: 3, attrs: {fill: "#eaf0fa"}}
+      ];
+
+      var timeline1 = new Chronoline(document.getElementById("target1"), events,
+        {animated: true,
+         tooltips: true,
+         defaultStartDate: new Date(2012, 3, 5),
+         sections: sections,
+         sectionLabelAttrs: {'fill': '#997e3d', 'font-weight': 'bold'},
+      });
+
+      $('#to-today').click(function(){timeline1.goToToday();});
+
+      var sections2 = [
+      {dates: [new Date(2011, 2, 31), new Date(2011, 9, 28)], title: "2011 MLB Season", section: 0, attrs: {fill: "##e3f0fe"}},
+      {dates: [new Date(2012, 2, 28), new Date(2012, 9, 3)], title: "2012 MLB Regular Season", section: 1, attrs: {fill: "#e3f0fe"}},
+      {dates: [new Date(2012, 1, 29), new Date(2012, 3, 4)], title: "Spring Training", section: 2, attrs: {fill: "#cce5ff"}},
+      {dates: [new Date(2012, 9, 4), new Date(2012, 9, 31)], title: "2012 MLB Playoffs", section: 3, attrs: {fill: "#cce5ff"}}
+      ];
+
+      var timeline2 = new Chronoline(document.getElementById("target2"), events,
+        {visibleSpan: DAY_IN_MILLISECONDS * 91,
+      animated: true,
+         tooltips: true,
+         defaultStartDate: new Date(2012, 3, 5),
+         sections: sections2,
+         sectionLabelAttrs: {'fill': '#997e3d', 'font-weight': 'bold'},
+      labelInterval: isFifthDay,
+      hashInterval: isFifthDay,
+      scrollLeft: prevMonth,
+      scrollRight: nextMonth,
+      markToday: 'labelBox',
+         draggable: true
+      });
+
+      var timeline3 = new Chronoline(document.getElementById("target3"), events,
+        {visibleSpan: DAY_IN_MILLISECONDS * 366,
+      animated: true,
+         tooltips: true,
+         defaultStartDate: new Date(2012, 3, 5),
+         sections: sections,
+         sectionLabelAttrs: {'fill': '#997e3d', 'font-weight': 'bold'},
+      labelInterval: isHalfMonth,
+      hashInterval: isHalfMonth,
+      scrollLeft: prevQuarter,
+      scrollRight: nextQuarter,
+      floatingSubLabels: false,
+      });
+
+      $('#zoom').click(function() {
+          timeline3.zoom(parseFloat($('#zoom-factor').val()));
+      });
+      });
+    </script>
+  <script>
+      //knob
+      $(".knob").knob();
+  </script>
+  </body>
+</html>
